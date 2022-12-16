@@ -95,10 +95,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0); // pin_5 green led off
-	  	  HAL_Delay(1000);
-	  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1); // led on
-	      HAL_Delay(1000);
+	  HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13); // Enable button
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0); // pin_5 green led off
+  	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)==0){ // if we push button
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1); // led on
+		  HAL_Delay(1000);  //delay
+	  	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
